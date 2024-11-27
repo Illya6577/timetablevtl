@@ -43,7 +43,7 @@ function updateTable(data) {
     })
   }
 
-  for (let i = 1; i < 8; i++) {
+  for (let i = 1; i < 9; i++) {
     const cell = document.createElement("td")
     cell.innerText = i
     cell.classList.add("text-center")
