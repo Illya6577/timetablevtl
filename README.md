@@ -14,3 +14,6 @@ This is web-site with timetable. Here, we can watch school schedule, get link to
   - [x] **mobile devices adaptation**
   - [x] often question
   - [ ] ***more in the future...***
+
+
+Bim bim bim bim bim bam
