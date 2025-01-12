@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable</title>
+    <style>
+        .tile {
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .tile h3 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="tile" id="subgroup1-tile">
+        <h3>I підгрупа</h3>
+    </div>
+    <div class="tile" id="subgroup2-tile">
+        <h3>II підгрупа</h3>
+    </div>
+
+    <script>
+        // Функція для визначення парності тижня
+        function isEvenWeek() {
+            const currentDate = new Date();
+            // Отримуємо початок року
+            const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+            // Обчислюємо кількість днів від початку року
+            const daysDifference = Math.floor((currentDate - startOfYear) / (1000 * 60 * 60 * 24));
+            // Отримуємо номер тижня
+            const weekNumber = Math.ceil((daysDifference + startOfYear.getDay() + 1) / 7);
+            // Повертаємо true для парного тижня, false для непарного
+            return weekNumber % 2 === 0;
+        }
+
+        // Перевірка для I підгрупи
+        const subgroup1Tile = document.getElementById('subgroup1-tile');
+        subgroup1Tile.addEventListener('click', () => {
+            if (isEvenWeek()) {
+                window.location.href = 'timetable.html';
+            } else {
+                window.location.href = 'timetable-1.html';
+            }
+        });
+
+        // Перевірка для II підгрупи
+        const subgroup2Tile = document.getElementById('subgroup2-tile');
+        subgroup2Tile.addEventListener('click', () => {
+            if (isEvenWeek()) {
+                window.location.href = 'timetable-2.html';
+            } else {
+                window.location.href = 'timetable-2-1.html';
+            }
+        });
+    </script>
+</body>
+</html>
