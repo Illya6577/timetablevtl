@@ -30,12 +30,16 @@
     <main>
         <h1>Оберіть підгрупу</h1>
         <div class="main-content tiles-box">
-            <div class="tile" id="subgroup1-tile">
-                <h3>I підгрупа</h3>
-            </div>
-            <div class="tile" id="subgroup2-tile">
-                <h3>II підгрупа</h3>
-            </div>
+            <a href="timetable.html">
+                <div class="tile">
+                    <h3>I підгрупа</h3>
+                </div>
+            </a>
+                <a href="timetable-2.html">
+                    <div class="tile">
+                        <h3>II підгрупа</h3>
+                    </div>
+                </a>
         </div>
         <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-3112567728462430" data-ad-slot="5393247383" data-auto-format="rspv" data-full-width="">
             <div overflow=""></div>
@@ -51,43 +55,5 @@
     </div>
     <script src="autoconnect.js"></script>
     <script src="alarm.js"></script>
-    <script>
-        // Функція для визначення парності тижня
-        function isEvenWeek() {
-            const currentDate = new Date();
-            const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
-            const startDayOfWeek = startOfYear.getDay();
-            const offset = (startDayOfWeek === 6) ? 0 : (6 - startDayOfWeek + 1);
-            const adjustedStartOfYear = new Date(startOfYear.getTime() + offset * 24 * 60 * 60 * 1000);
-            const daysDifference = Math.floor((currentDate - adjustedStartOfYear) / (1000 * 60 * 60 * 24));
-            const weekNumber = Math.ceil((daysDifference + 1) / 7);
-            return weekNumber % 2 === 0;
-        }
-    
-        // Перевірка функції
-        console.log(isEvenWeek());
-    </script>
-    
-
-        // Перевірка для I підгрупи
-        const subgroup1Tile = document.getElementById('subgroup1-tile');
-        subgroup1Tile.addEventListener('click', () => {
-            if (isEvenWeek()) {
-                window.location.href = 'timetable.html';
-            } else {
-                window.location.href = 'timetable.1.html';
-            }
-        });
-
-        // Перевірка для II підгрупи
-        const subgroup2Tile = document.getElementById('subgroup2-tile');
-        subgroup2Tile.addEventListener('click', () => {
-            if (isEvenWeek()) {
-                window.location.href = 'timetable-2.html';
-            } else {
-                window.location.href = 'timetable-2.1.html';
-            }
-        });
-    </script>
 </body>
 </html>
