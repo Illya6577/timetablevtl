@@ -19,7 +19,7 @@ function getCurrentWeek() {
 const currentWeek = getCurrentWeek();
 
 // Визначаємо, який файл з розкладом завантажувати в залежності від поточного тижня
-const timetableFile = `./data/timetable.${(currentWeek - 1) % 4}.json`;
+const timetableFile = `./data/timetable-1-${(currentWeek - 1) % 4}.json`;
 
 const fetchWithDynamicTimetable = [
   ...fetchRequests,
