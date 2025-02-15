@@ -4,11 +4,29 @@ const tableRows = table.querySelectorAll("tr")
 const fetchRequests = [
   fetch("./data/importance.json"),
   fetch("./data/links.json"),
-  fetch("./data/timetable.json"),
   fetch("./data/time.json")
 ]
 
-Promise.all(fetchRequests)
+// Функція для обчислення поточного тижня року
+function getCurrentWeek() {
+  const currentDate = new Date();
+  const startDate = new Date(currentDate.getFullYear(), 0, 1);
+  const days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));
+  return Math.ceil((days + startDate.getDay() + 1) / 7);
+}
+
+// Отримуємо поточний тиждень
+const currentWeek = getCurrentWeek();
+
+// Визначаємо, який файл з розкладом завантажувати в залежності від поточного тижня
+const timetableFile = `./data/timetable.${(currentWeek - 1) % 4}.json`;
+
+const fetchWithDynamicTimetable = [
+  ...fetchRequests,
+  fetch(timetableFile)
+];
+
+Promise.all(fetchWithDynamicTimetable)
   .then(response => {
     return Promise.all(response.map(response => response.json()))
   })
@@ -22,8 +40,8 @@ Promise.all(fetchRequests)
 function updateTable(data) {
   const dataImportance = data[0]
   const dataLinks = data[1]
-  const dataTimetable = data[2]
-  const dataTime = data[3]
+  const dataTime = data[2]
+  const dataTimetable = data[3]
 
   for (const [day, subjects] of Object.entries(dataTimetable)) {
     let counter = 1
