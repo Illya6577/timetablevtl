@@ -4,7 +4,7 @@ const tableRows = table.querySelectorAll("tr")
 const fetchRequests = [
   fetch("./data/importance.json"),
   fetch("./data/links.json"),
-  fetch("./data/timetable-1-3.json"),
+  fetch("./data/timetable-1.json"),
   fetch("./data/time.json")
 ]
 
